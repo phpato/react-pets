@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/phpato/react-pets/static/css/main.2cce8147.chunk.css",
+    "main.js": "/phpato/react-pets/static/js/main.00b4a0dd.chunk.js",
+    "main.js.map": "/phpato/react-pets/static/js/main.00b4a0dd.chunk.js.map",
+    "runtime~main.js": "/phpato/react-pets/static/js/runtime~main.2e9a68bc.js",
+    "runtime~main.js.map": "/phpato/react-pets/static/js/runtime~main.2e9a68bc.js.map",
+    "static/js/2.8ca743ae.chunk.js": "/phpato/react-pets/static/js/2.8ca743ae.chunk.js",
+    "static/js/2.8ca743ae.chunk.js.map": "/phpato/react-pets/static/js/2.8ca743ae.chunk.js.map",
+    "index.html": "/phpato/react-pets/index.html",
+    "precache-manifest.53ac0146bf92e4d78afeeb7809cba6fc.js": "/phpato/react-pets/precache-manifest.53ac0146bf92e4d78afeeb7809cba6fc.js",
+    "service-worker.js": "/phpato/react-pets/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/phpato/react-pets/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/phpato/react-pets/static/media/logo.5d5d9eef.svg"
+  }
+}
