@@ -26,7 +26,7 @@ class TablaPropietario extends React.Component {
             //console.log("el mees es: ",this.props)    
             let ctm = this
             if (result.value) {
-                axios.delete(`http://localhost:3000/propietarios/propietario/${propietario._id}`)
+                axios.delete(`https://patriciocabrera-webpage.herokuapp.com/propietarios/propietario/${propietario._id}`)
                 .then(function (response) {
                     Swal.fire({
                         position: 'center',
@@ -48,7 +48,7 @@ class TablaPropietario extends React.Component {
     verMascotas(propietario,event){
         event.preventDefault();
         let me = this
-        axios.get(`http://localhost:3000/propietarios/propietario/${propietario._id}`)
+        axios.get(`https://patriciocabrera-webpage.herokuapp.com/propietarios/propietario/${propietario._id}`)
         .then(function (response) {
             //console.log("tiene mascotas: ",response.data.propietarioMascota);
             me.setState({mascotas: response.data.propietarioMascota})
@@ -72,7 +72,7 @@ class TablaPropietario extends React.Component {
                      <td>{elem.apellido}</td>
                      <td>{elem.email}</td>
                      <td>
-                        <button onClick = { e =>  this.verMascotas(elem,e)}  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                        <button onClick = { e =>  this.verMascotas(elem,e)}  type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                             <span className = "fa fa-search-plus"></span>
                         </button>    
                         <button onClick = { e =>  this.eliminarPropietario(elem,e)}  className="btn btn-danger">
@@ -134,20 +134,20 @@ class TablaPropietario extends React.Component {
              
               
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Mascotas del usuario</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Mascotas del usuario</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         {arrayMascota}
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-info" data-dismiss="modal">Cerrar</button>
                     </div>
                     </div>
                 </div>

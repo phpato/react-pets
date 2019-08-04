@@ -1,5 +1,4 @@
 import React from 'react'
-import ModalAgregaCliente from './modalAgregaCliente'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import TablaPropietarios from './tablaPropietarios'
@@ -15,11 +14,11 @@ class InfoCliente extends React.Component {
     }
 
     listarCliente(){
-        axios.get('http://localhost:3000/propietarios/propietario',{
+        axios.get('https://patriciocabrera-webpage.herokuapp.com/propietarios/propietario',{
             mode: 'no-cors'
         })
         .then(response => {
-          console.log("la response es: ",response.data);
+          //console.log("la response es: ",response.data);
           this.setState({ propietarios: response.data.data });
         })
         .catch(error => {
@@ -42,15 +41,15 @@ class InfoCliente extends React.Component {
             return true;
         }
         if(!this.state.nombre){
-           errores.push({error:"Dene ingresar un nombre",key: "nombre"})
+           errores.push({error:"Debe ingresar un nombre",key: "nombre"})
             this.setState({errores})
         }
         if(!this.state.apellido){
-            errores.push({error:"Dene ingresar un nombre",key: "apellido"})
+            errores.push({error:"Debe ingresar un nombre",key: "apellido"})
              this.setState({errores})
          }
          if(!this.state.email){
-            errores.push({error:"Dene ingresar un email",key: "email"})
+            errores.push({error:"Debe ingresar un email",key: "email"})
              this.setState({errores})
          }
         console.log("los errores son: ",errores)
@@ -66,12 +65,12 @@ class InfoCliente extends React.Component {
     
     }
     guardarCliente = (event) =>{
-        console.log("guardando cliente");
+        //console.log("guardando cliente");
         let me = this;
         event.preventDefault()
         let formValido = this.validarFormulario(event)
         if(formValido){
-            axios.post('http://localhost:3000/propietarios/propietario', {
+            axios.post('https://patriciocabrera-webpage.herokuapp.com/propietarios/propietario', {
                 mode: 'no-cors',
                 nombre: this.state.nombre,
                 apellido: this.state.apellido,
@@ -81,7 +80,7 @@ class InfoCliente extends React.Component {
                 Swal.fire({
                     position: 'center',
                     type: 'success',
-                    title: 'Categoria registrada exitosamente!',
+                    title: 'Propietario registrado exitosamente!',
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
@@ -104,10 +103,10 @@ class InfoCliente extends React.Component {
         let {errores} = this.state
         let erroresForm = []
         if(errores.length > 0 ){
-            errores.map(e => {
+            errores.map( (e,i) => {
 
                 erroresForm.push(
-                    <li><b>{e.key}: </b>{e.error} </li>
+                    <li key = {i}><b>{e.key}: </b>{e.error} </li>
                 )
             })
         }

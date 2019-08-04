@@ -10,7 +10,7 @@ class FormMascota extends React.Component {
     }
     validarFormulario() {
         let errores = []
-        if (this.state.nombre && this.state.apellido && this.state.email) {
+        if (this.state.nombre && this.state.tipo && this.state.owner) {
             return true;
         }
         if(!this.state.nombre){
@@ -40,10 +40,10 @@ class FormMascota extends React.Component {
     guardarMascota = (event) =>{
         console.log("guardando mascota");
         let me = this;
-        /*event.preventDefault()
+        event.preventDefault()
         let formValido = this.validarFormulario(event)
-        if(formValido){*/
-            axios.post('http://localhost:3000/mascotas/mascota', {
+        if(formValido){
+            axios.post('https://patriciocabrera-webpage.herokuapp.com/mascotas/mascota', {
                 mode: 'no-cors',
                 nombre: this.state.nombre,
                 tipo: this.state.tipo,
@@ -64,7 +64,7 @@ class FormMascota extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-        //}
+        }
     }
     limpiarFormulario(){
         this.setState({
@@ -74,14 +74,14 @@ class FormMascota extends React.Component {
         })
     }
     render(){
-        console.log("las props que llegaron aca son: ",this.props)
+        //console.log("las props que llegaron aca son: ",this.props)
         let { propietarios } = this.props;
         let arrayPropietarios = []
         if(propietarios.length > 0){
             propietarios.map( (elem,i) =>{
                 //console.log("el elemento es: ",elem)
                 arrayPropietarios.push(
-                    <option value = {elem._id}>{elem.nombre}</option>
+                    <option key={i} value = {elem._id}>{elem.nombre}</option>
                 )
             })
         }else{
@@ -98,15 +98,15 @@ class FormMascota extends React.Component {
                         <form onSubmit = { e => this.guardarMascota(e)}>
                             <div className= "form-group">
                                 <label>Nombre</label>
-                                <input type="text" className = "form-control" value = {this.state.nombre} onChange = { (e) => this.setState({nombre: e.target.value}) } />
+                                <input type="text" required className = "form-control" value = {this.state.nombre} onChange = { (e) => this.setState({nombre: e.target.value}) } />
                             </div>
                             <div className= "form-group">
                                 <label>Tipo</label>
-                                <input type="text" className = "form-control" value = {this.state.tipo} onChange = { (e) => this.setState({tipo: e.target.value}) } />
+                                <input type="text" required className = "form-control" value = {this.state.tipo} onChange = { (e) => this.setState({tipo: e.target.value}) } />
                             </div>
                             <div className= "form-group">
                                 <label>Propietario</label>
-                                <select className = "form-control" value = {this.state.owner} onChange = { (e) => this.setState({owner: e.target.value}) } >
+                                <select required className = "form-control" value = {this.state.owner} onChange = { (e) => this.setState({owner: e.target.value}) } >
                                     <option value = ''>Seleccione un opcion</option>
                                     {arrayPropietarios}
                                 </select>

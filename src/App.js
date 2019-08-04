@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoCliente from './components/WheaterLocation'
+import InfoCliente from './components/DashboardPet'
 import Navbar from './components/Navbar'
 import logo from './logo.svg';
 import './App.css';
